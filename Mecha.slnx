@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Mecha/Mecha.vcxproj" Id="6f7f1607-c478-4448-8bed-d55b3fb461f7" />
+</Solution>
