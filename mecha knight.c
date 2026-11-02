@@ -29,7 +29,7 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 
- // ---------- CONSTANTES DO JOGO ----------
+ // CONSTANTES DO JOGO 
 #define LARGURA_TELA 800
 #define ALTURA_TELA  600
 #define FPS          60
