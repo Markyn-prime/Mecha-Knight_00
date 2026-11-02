@@ -21,7 +21,7 @@
  *   AMPLIADOS (escala 4x) pra aparecer grande e quadradinho.
  *   Assim nao precisamos de nenhuma DLL ou imagem extra.
  *
- * ============================================================
+ *
  */
 
 #include <stdio.h>
@@ -58,9 +58,9 @@
 #define DURACAO_ATAQUE 24    // duracao total do ataque (preparo + golpe)
 
 /*
- * ============================================================
+ 
  *  DESENHOS DO ROBO (cada linha de texto = uma linha de pixels)
- *
+ 
  *  Legenda das letras:
  *    .  transparente (nao desenha nada)
  *    o  contorno escuro
@@ -69,9 +69,9 @@
  *    c  ciano (olhos e peito)
  *    r  vermelho (antena)
  *    y  amarelo (energia do ataque)
- *
+ 
  *  IMPORTANTE: toda linha precisa ter exatamente 12 letras!
- * ============================================================
+ 
  */
 
  // A cabeca e igual na maioria dos frames, entao usamos uma
@@ -85,7 +85,7 @@
     "..oggggggo..", \
     "..oooooooo.."
 
-// ----- Frame: PARADO -----
+//  Frame: PARADO 
 const char* FRAME_PARADO[ROBO_ALT] = {
     CABECA,
     ".ooggggggoo.",
@@ -98,7 +98,7 @@ const char* FRAME_PARADO[ROBO_ALT] = {
     ".oooo..oooo."
 };
 
-// ----- Frames de ANDAR (3 desenhos diferentes das pernas) -----
+//  Frames de ANDAR (3 desenhos diferentes das pernas) 
 // Andar A: pernas abertas
 const char* FRAME_ANDAR_A[ROBO_ALT] = {
     CABECA,
@@ -138,7 +138,7 @@ const char* FRAME_ANDAR_C[ROBO_ALT] = {
     "..ooo......."
 };
 
-// ----- Frame: PULO (bracos pra cima, pernas encolhidas) -----
+//  Frame: PULO (bracos pra cima, pernas encolhidas) 
 // Aqui a cabeca e diferente (tem bracos ao lado), por isso
 // nao usamos a macro CABECA.
 const char* FRAME_PULO[ROBO_ALT] = {
@@ -185,7 +185,7 @@ const char* FRAME_ATAQUE_2[ROBO_ALT] = {
     "oooo....oooo"
 };
 
-// ----- Efeito do ataque (onda de energia na frente do soco) -----
+//  Efeito do ataque (onda de energia na frente do soco) 
 // Este desenho tem 6 colunas x 8 linhas
 const char* FRAME_EFEITO[FX_ALT] = {
     "y.....",
@@ -260,7 +260,7 @@ ALLEGRO_BITMAP* criar_retangulo(int largura, int altura, ALLEGRO_COLOR cor) {
 
 int main() {
 
-    // ---------- INICIALIZACAO DO ALLEGRO ----------
+    //  INICIALIZACAO DO ALLEGRO 
     if (!al_init()) {
         printf("Erro ao iniciar o Allegro\n");
         return -1;
@@ -281,7 +281,7 @@ int main() {
         return -1;
     }
 
-    // ---------- CARREGANDO O FUNDO ----------
+    //  CARREGANDO O FUNDO 
     // A imagem deve se chamar exatamente pixil-frame-0.png.
     // O programa tenta os caminhos mais comuns do Visual Studio.
     ALLEGRO_BITMAP* fundo = al_load_bitmap("pixil-frame-0.png");
@@ -312,7 +312,7 @@ int main() {
     al_register_event_source(fila, al_get_timer_event_source(timer));
     al_register_event_source(fila, al_get_keyboard_event_source());
 
-    // ---------- CRIANDO OS BITMAPS ----------
+    //  CRIANDO OS BITMAPS
     // Chao de cada fase: [0] verde, [1] azul, [2] vermelho
     ALLEGRO_BITMAP* chao[TOTAL_FASES];
     chao[0] = criar_retangulo(LARGURA_TELA, ALTURA_CHAO, al_map_rgb(0, 160, 0));
@@ -471,7 +471,7 @@ int main() {
                 }
             }
 
-            // ----- Troca de fase pela DIREITA -----
+            //  Troca de fase pela DIREITA 
             // Usamos ">" (e nao ">=") pra nao trocar de fase de novo
             // logo que o robo aparece na borda direita.
             if (x + LARG_PX > LARGURA_TELA) {
@@ -487,7 +487,7 @@ int main() {
             desenhar = true;
         }
 
-        // ---------- DESENHO ----------
+        //  DESENHO 
         if (desenhar && al_is_event_queue_empty(fila)) {
             desenhar = false;
 
@@ -504,7 +504,7 @@ int main() {
             // Chao da fase atual
             // O chao agora e o proprio cenario da imagem de lava.
 
-            // --- Escolhe qual desenho do robo usar (ordem de prioridade) ---
+            //  Escolhe qual desenho do robo usar (ordem de prioridade) 
             ALLEGRO_BITMAP* sprite_atual;
 
             if (atacando) {
@@ -564,7 +564,7 @@ int main() {
         }
     }
 
-    // ---------- LIMPEZA ----------
+    //  LIMPEZA 
     // Destroi tudo que foi criado, pra nao vazar memoria
     for (int i = 0; i < TOTAL_FASES; i++) {
         al_destroy_bitmap(chao[i]);
