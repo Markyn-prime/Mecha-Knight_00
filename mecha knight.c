@@ -41,7 +41,7 @@
 #define GRAVIDADE    0.8f    // aumento da velocidade vertical por frame
 #define FORCA_PULO  -15.0f   // negativo porque o eixo Y cresce pra BAIXO
 
-// ---------- CONSTANTES DO SPRITE ----------
+//  CONSTANTES DO SPRITE 
 #define ROBO_LARG    12      // largura do desenho do robo (em "pixels do desenho")
 #define ROBO_ALT     14      // altura do desenho do robo
 #define FX_LARG      6       // largura do efeito do ataque
@@ -52,7 +52,7 @@
 #define LARG_PX      (ROBO_LARG * ESCALA)   // 48 pixels
 #define ALT_PX       (ROBO_ALT  * ESCALA)   // 56 pixels
 
-// ---------- CONSTANTES DE ANIMACAO ----------
+//  CONSTANTES DE ANIMACAO 
 #define VEL_ANIMACAO   8     // troca o frame de andar a cada 8 frames do jogo
 #define TEMPO_PREPARO  12    // frames do ataque "carregando" (soco recuado)
 #define DURACAO_ATAQUE 24    // duracao total do ataque (preparo + golpe)
@@ -158,7 +158,7 @@ const char* FRAME_PULO[ROBO_ALT] = {
     "............"
 };
 
-// ----- Frames de ATAQUE -----
+// Frames de ATAQUE 
 // Ataque 1: preparando o soco (mao direita brilhando em amarelo)
 const char* FRAME_ATAQUE_1[ROBO_ALT] = {
     CABECA,
@@ -353,7 +353,7 @@ int main() {
 
     ALLEGRO_COLOR cor_fundo = al_map_rgb(45, 45, 80);
 
-    // ---------- VARIAVEIS DO JOGO ----------
+    //  VARIAVEIS DO JOGO 
     int fase = 0;                 // fase atual (0, 1 ou 2)
 
     float x = 50;                 // posicao do robo (canto superior esquerdo)
@@ -375,7 +375,7 @@ int main() {
 
     al_start_timer(timer);
 
-    // ---------- LOOP PRINCIPAL ----------
+    //  LOOP PRINCIPAL 
     while (rodando) {
 
         ALLEGRO_EVENT evento;
@@ -386,7 +386,7 @@ int main() {
             rodando = false;
         }
 
-        // --- Uma tecla foi apertada (evento unico, nao fica repetindo) ---
+        //  Uma tecla foi apertada (evento unico, nao fica repetindo) 
         else if (evento.type == ALLEGRO_EVENT_KEY_DOWN) {
 
             int tecla = evento.keyboard.keycode;
@@ -409,7 +409,7 @@ int main() {
             }
         }
 
-        // --- Batida do timer: atualiza a logica do jogo ---
+        //  Batida do timer: atualiza a logica do jogo 
         else if (evento.type == ALLEGRO_EVENT_TIMER) {
 
             // Estado atual do teclado (teclas seguradas)
@@ -460,7 +460,7 @@ int main() {
                 no_chao = true;
             }
 
-            // ----- Troca de fase pela ESQUERDA -----
+            //  Troca de fase pela ESQUERDA 
             if (x < 0) {
                 if (fase > 0) {
                     fase--;                        // vai pra fase anterior
